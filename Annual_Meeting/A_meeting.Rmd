@@ -1,0 +1,88 @@
+---
+title: "Untitled"
+author: "Emily"
+date: "September 18, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(dbplyr)
+
+install.packages("janitor")
+install.packages("tibble")
+
+library(tibble)
+library(janitor)
+
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r }
+
+hb_chla <- read_csv("Chla_hb_rough.csv")
+
+hb_chla <- hb_chla %>% 
+  mutate(t_f_day = as.Date(Date, format = "%m/%d/%Y"))
+
+mt <- read_csv("Monoterpene_tseries_vocus.csv", skip = 3)
+
+names(mt) <- c("mont_bg", "mont", "tseries_raw", "tseries_excel")
+
+mt<- mt %>% 
+  mutate(t_series_f <- excel_numeric_to_date(as.numeric(as.character(tseries_excel)), date_system = "modern"))    
+
+names(mt) <- c("mont_bg", "mont", "tseries_raw", "tseries_excel", "t_series_f")
+
+
+mt_sum <- mt  %>% 
+  group_by(tseries_raw) %>% 
+  summarise(monoterp_min = mean(mont, na.rm = TRUE), monoterp_bkgd = mean(mont_bg, na.rm = TRUE), t_f_day = min (t_series_f)) %>% 
+  mutate(monoterp_ppt = (monoterp_min/.65)) %>% 
+  mutate(date_t = as.POSIXct(tseries_raw, format = "%m/%d/%Y %H:%M"))
+
+mt_sum_day <- mt_sum %>% 
+  group_by(t_f_day) %>% 
+  summarise(mt_day_raw = mean(monoterp_min, na.rm = TRUE), monoterp_day_ppt = mean(monoterp_ppt, na.rm = TRUE), monoterp_day_bkgd = mean(monoterp_bkgd, na.rm = TRUE))
+
+
+mt_sum_day %>% 
+  ggplot(aes(x = t_f_day, y = mt_day_raw))+
+  geom_point()
+
+all_ext <- hb_chla %>% 
+  left_join(mt_sum_day) %>% 
+  mutate(Het_bac_norm = Het_bac_cell_ml/max(Het_bac_cell_ml, na.rm= TRUE)) %>% 
+  mutate(chlor_norm = Aquafluor_ug_L/max(Aquafluor_ug_L))
+
+ggplot()+
+  geom_line(data = all_ext, aes(x = t_f_day, y = Het_bac_norm, color = "blue"))+
+  geom_line(data = all_ext, aes(x = t_f_day, y = monoterp_day_ppt/100, color = "red"))+
+  geom_line(data = all_ext, aes(x = t_f_day, y = chlor_norm, color = "green"))+
+  ggtitle("Bloom 3 Time Series")+
+  xlab("Date")+
+  ylab("Normalized Chlorophyll A and Het Bacteria Concentrations")+
+  scale_y_continuous(sec.axis = sec_axis(~ . *100, name = "Approximate Monoterpene Abundance from PTR (ppt)"))+
+  scale_color_discrete(name = "", labels = c("Heterotrophic Bacteria", "Chlorophyll A", "Monoterpene"))+
+  theme_bw()+
+  theme(panel.border = element_blank())
+  
+  
+  
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
