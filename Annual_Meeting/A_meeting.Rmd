@@ -9,8 +9,8 @@ output: html_document
 library(tidyverse)
 library(dbplyr)
 
-install.packages("janitor")
-install.packages("tibble")
+#install.packages("janitor")
+#install.packages("tibble")
 
 library(tibble)
 library(janitor)
@@ -25,6 +25,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r }
+bt <- read_csv("g_70_70ev_labeledbt.csv")
 
 hb_chla <- read_csv("Chla_hb_rough.csv")
 
@@ -62,10 +63,10 @@ all_ext <- hb_chla %>%
   mutate(chlor_norm = Aquafluor_ug_L/max(Aquafluor_ug_L))
 
 ggplot()+
-  geom_line(data = all_ext, aes(x = t_f_day, y = Het_bac_norm, color = "blue"))+
-  geom_line(data = all_ext, aes(x = t_f_day, y = monoterp_day_ppt/100, color = "red"))+
-  geom_line(data = all_ext, aes(x = t_f_day, y = chlor_norm, color = "green"))+
-  ggtitle("Bloom 3 Time Series")+
+  geom_line(data = all_ext, aes(x = t_f_day, y = Het_bac_norm, color = "blue"), size = 1.1)+
+  geom_line(data = all_ext, aes(x = t_f_day, y = monoterp_day_ppt/100, color = "red"), size = 1.1)+
+  geom_line(data = all_ext, aes(x = t_f_day, y = chlor_norm, color = "green"), size = 1.1)+
+  #ggtitle("Bloom 3 Time Series")+
   xlab("Date")+
   ylab("Normalized Chlorophyll A and Het Bacteria Concentrations")+
   scale_y_continuous(sec.axis = sec_axis(~ . *100, name = "Approximate Monoterpene Abundance from PTR (ppt)"))+
