@@ -1,4 +1,4 @@
-BlobID,Compound Name,Category,Label,Group Name,Inclusion,Internal Standard,Retention I (min),Retention II (sec),Peak Value,Volume,Library ID,Library Match Factor,Library Reverse Match Factor,Library Name,Library Probability,Library RI,Library Formula
+BlobID,Compound Name,Category,Label,Group Name,Inclusion,Internal Standard,Retention_I_min,Retention_II_sec,Peak Value,Volume,Library ID,Library Match Factor,Library Reverse Match Factor,Library Name,Library Probability,Library RI,Library Formula
 2051,"Oxime-, methoxy-phenyl-_",Unknown,,,FALSE,0,21.5000265,0.499999965,1703,7841,117767,627,789,mainlib,18.31999969,,C8H9NO2
 2053,coeluted monoterpene,Monoterpene,Carene (?),,TRUE,0,21.58335982,0.519999964,1260,8088,-1,-1,-1,-,-1,,-
 1697,"Benzene, 1-ethyl-2-methyl-",Unknown,,,FALSE,0,19.91669327,1.919999866,1477,20124,80896,633,766,mainlib,11.77000046,970,C9H12
@@ -290,7 +290,7 @@ BlobID,Compound Name,Category,Label,Group Name,Inclusion,Internal Standard,Reten
 1574,3-Hexenedinitrile,Unknown,,,FALSE,0,23.00002639,3.899999727,1884,60590,31980,774,897,mainlib,76.01999664,,C6H6N2
 624,"Oxirane, dodecyl-",Unknown,,,FALSE,0,30.66669252,0.549999962,7814,61013,2443,728,773,mainlib,3.880000114,,C14H28O
 1035,α-acorenol,Unknown,,,FALSE,0,36.50002545,0.639999955,4067,61287,99931,770,801,mainlib,4.849999905,,C15H26O
-1093,"Benzenesulfonamide, N-ethyl-2-methyl-",Marine Contaminant,Acutely Toxic,m_not_marine,TRUE,0,43.66669161,2.069999855,3414,61688,62543,810,827,mainlib,82.13999939,,C9H13NO2S
+1093,"Benzenesulfonamide, N-ethyl-2-methyl-",Marine Contaminant,,m_not_marine,TRUE,0,43.66669161,2.069999855,3414,61688,62543,810,827,mainlib,82.13999939,,C9H13NO2S
 1030,"2-(1,1-Dimethylethyl)-5-oxohexanal",Unknown,,,FALSE,0,31.5000258,0.979999931,3873,62006,27941,744,786,mainlib,12.85999966,,C10H18O2
 1085,"2-Undecanone, 6,10-dimethyl-",Unknown,,,FALSE,0,36.00002548,1.059999926,3493,63583,27986,794,833,mainlib,38.11999893,1408,C13H26O
 1307,"Phenol, 2-methoxy-",Unknown,,,FALSE,0,24.50002629,1.049999927,2648,63778,86307,700,781,mainlib,14.14000034,1090,C7H8O2
@@ -334,7 +334,7 @@ BlobID,Compound Name,Category,Label,Group Name,Inclusion,Internal Standard,Reten
 698,Dibenzofuran,Natural Marine,,maybe_marine_contam,TRUE,0,39.91669187,0.979999931,6748,86882,157036,843,873,mainlib,45.20999908,1514,C12H8O
 1104,Octanoic acid,Unknown,,,FALSE,0,26.16669284,0.959999933,3447,87273,30962,717,755,mainlib,21.72999954,1180,C8H16O2
 800,"5-Hexenenitrile, 2-methyl-",Unknown,,,FALSE,0,24.50002629,1.599999888,5451,87439,19001,684,749,mainlib,7.690000057,848,C7H11N
-510,Limonene,Natural Marine,Limonene,,TRUE,0,22.16669312,0.539999962,13863,87900,-1,-1,-1,-,-1,,-
+510,Limonene,Monoterpene,Limonene,,TRUE,0,22.16669312,0.539999962,13863,87900,-1,-1,-1,-,-1,,-
 1153,"Propanedinitrile, propylidene-",Unknown,,,FALSE,0,22.75002641,3.489999756,3212,88314,193,725,771,mainlib,31.56999969,,C6H6N2
 984,"1H-Indazole, 3-methyl-",Unknown,,,FALSE,0,29.0833593,1.239999913,4439,88796,116615,723,808,mainlib,17.53000069,,C8H8N2
 978,"Azetidine, 3-methyl-3-phenyl-",Unknown,,,FALSE,0,20.08335993,1.889999868,4432,88911,98334,869,900,mainlib,27.42000008,,C10H13N
@@ -383,7 +383,7 @@ BlobID,Compound Name,Category,Label,Group Name,Inclusion,Internal Standard,Reten
 567,"Ethanone, 1-(3-methylphenyl)-",Unknown,,,FALSE,0,28.41669268,1.299999909,9739,133410,99543,879,890,mainlib,42.65000153,1182,C9H10O
 477,Biphenyl,Unknown,,marine_contam- in fb but way more in sample,TRUE,0,35.41669219,0.829999942,15988,133597,143989,885,896,mainlib,28.54000092,1381,C12H10
 584,1H-Phenalene,Unknown,,,FALSE,0,42.00002506,0.969999932,8941,137744,154408,803,886,mainlib,54.61000061,,C13H10
-731,"Propanoic acid, 2-methyl-, 3-hydroxy-2,2,4-trimethylpentyl ester",Natural Marine,,algae_secretion,TRUE,0,35.00002555,1.119999922,6720,138187,38750,822,836,mainlib,50.63999939,1380,C12H24O3
+731,"Propanoic acid, 2-methyl-, 3-hydroxy-2,2,4-trimethylpentyl ester",Natural Marine,Algal Emission,algae_secretion,TRUE,0,35.00002555,1.119999922,6720,138187,38750,822,836,mainlib,50.63999939,1380,C12H24O3
 575,2-Dodecanone,Unknown,,,FALSE,0,35.66669217,1.039999927,9259,138469,27956,837,852,mainlib,43.65000153,1396,C12H24O
 609,o-Hydroxybiphenyl,Unknown,,,FALSE,0,39.66669189,0.899999937,8303,139255,159145,772,880,mainlib,42.81999969,1507,C12H10O
 1504,"Hex-3-ene-1,6-diol",Unknown,,,FALSE,0,25.08335958,4.299999699,1950,143731,33440,679,704,mainlib,9.119999886,,C6H12O2
@@ -397,7 +397,7 @@ BlobID,Compound Name,Category,Label,Group Name,Inclusion,Internal Standard,Reten
 546,"3-Heptanone, 5-methyl-",Unknown,,,FALSE,0,20.25002658,1.079999924,11357,165450,501,806,862,mainlib,41.63999939,944,C8H16O
 529,"Ethanone, 1,2-diphenyl-",Unknown,,,FALSE,0,46.00002478,1.209999915,12148,167200,78638,874,901,mainlib,22.34000015,1537,C14H12O
 551,2-Undecanone,Unknown,,,FALSE,0,32.25002574,1.049999927,10960,167468,27955,851,863,mainlib,51.58000183,1294,C11H22O
-431,4-Octanone,Natural Marine,,m_not_marine,TRUE,0,19.66669329,1.069999925,20123,167557,7845,878,902,mainlib,69.48000336,976,C8H16O
+431,4-Octanone,Natural Marine,Bacterial Emission,m_not_marine,TRUE,0,19.66669329,1.069999925,20123,167557,7845,878,902,mainlib,69.48000336,976,C8H16O
 151,"Benzene, hexyl-",Marine Contaminant,,maybe_marine_contam,FALSE,0,31.16669249,0.649999955,33381,185513,60659,884,889,mainlib,43.47999954,1247,C12H18
 497,Tridecanal,Natural Marine,,maybe_marine_metabolite,TRUE,0,39.41669191,0.949999934,13896,197339,24045,898,923,mainlib,27.03000069,1512,C13H26O
 496,"2-Decenal, (Z)-",Unknown,,,FALSE,0,31.16669249,1.249999913,13614,200959,2441,875,928,mainlib,39.34999847,1252,C10H18O

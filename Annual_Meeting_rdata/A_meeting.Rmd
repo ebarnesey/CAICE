@@ -11,9 +11,11 @@ library(dbplyr)
 
 #install.packages("janitor")
 #install.packages("tibble")
+#install.packages("ggrepel")
 
 library(tibble)
 library(janitor)
+library(ggrepel)
 
 
 ```
@@ -25,7 +27,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r }
-bt <- read_csv("g_70_70ev_labeledbt.csv")
+bt <- read_csv("g_70_70ev_labeledbt_2.csv")
 
 hb_chla <- read_csv("Chla_hb_rough.csv")
 
@@ -82,8 +84,17 @@ ggplot()+
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r bt}
+b <- bt %>% ggplot(aes(x = Retention_I_min, y = Retention_II_sec, color = Category))+
+  geom_point()+
+  geom_label_repel(aes(label = Label), min.segment.length = .2)+
+  xlab("Retention Time I (min)")+
+  ylab("Retention Time II (sec)")+
+  scale_color_discrete(name = "")+
+  theme_bw()+
+  theme(panel.border = element_blank())
+
+b
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
